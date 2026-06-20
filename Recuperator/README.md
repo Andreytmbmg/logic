@@ -1,7 +1,7 @@
 # 💨 Рекуператор — логический сценарий для Sprut Hub
 
 **Версия:** 5.4  
-**Платформа:** [Sprut Hub](https://spruthub.ru) — движок Nashorn (ES5)  
+**Платформа:** [Sprut Hub](https://spruthub.ru)  
 **Устройство:** VAKIO Base Smart (MQTT) + датчики качества воздуха
 
 ---
