@@ -1,0 +1,389 @@
+{
+  "name": "Рекуператор",
+  "manufacturer": "VAKIO",
+  "model": "Base Smart",
+  "modelIds": [
+    "(vakio[0-9]{1,3})/speed"
+  ],
+  "services": [
+    {
+      "name": "Рекуператор",
+      "type": "Fan",
+      "characteristics": [
+        {
+          "type": "RotationSpeed",
+          "link": [
+            {
+              "type": "Integer",
+              "topicGet": "(1)/speed",
+              "topicSet": "(1)/speed"
+            }
+          ],
+          "minValue": 1,
+          "maxValue": 7,
+          "minStep": 1
+        },
+        {
+          "type": "Active",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "(1)/state",
+              "topicSet": "(1)/state",
+              "map": {
+                "INACTIVE": "off",
+                "ACTIVE": "on"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Режим работы",
+      "type": "Television",
+      "characteristics": [
+        {
+          "type": "Active",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "(1)/state",
+              "topicSet": "(1)/state",
+              "map": {
+                "INACTIVE": "off",
+                "ACTIVE": "on"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ActiveIdentifier",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "(1)/workmode",
+              "topicSet": "(1)/workmode",
+              "inFunc": "({'inflow':1,'inflow_max':2,'recuperator':3,'winter':4,'outflow':5,'outflow_max':6,'night':7})[value] || 1",
+              "outFunc": "(['','inflow','inflow_max','recuperator','winter','outflow','outflow_max','night'])[value]"
+            }
+          ]
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Режим работы"
+        },
+        {
+          "type": "SleepDiscoveryMode",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Приток",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 1
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Приток"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Приток MAX",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 2
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Приток MAX"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Рекуперация лето",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 3
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Рекуперация лето"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Рекуперация зима",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 4
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Рекуперация зима"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Вытяжка",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 5
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Вытяжка"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Вытяжка MAX",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 6
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Вытяжка MAX"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Ночной",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 7
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Ночной"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Фильтр",
+      "type": "FilterMaintenance",
+      "characteristics": [
+        {
+          "type": "FilterLifeLevel",
+          "value": 100,
+          "desc": "Остаток ресурса фильтра 0-100%. Обновляется сценарием 'Фильтр рекуператора'. Учитывает износ механики F7 и угольного слоя."
+        },
+        {
+          "type": "FilterChangeIndication",
+          "value": 0,
+          "desc": "0 = фильтр в норме, 1 = требуется замена. Устанавливается сценарием при достижении критического порога."
+        },
+        {
+          "type": "ResetFilterIndication",
+          "value": 0,
+          "desc": "Запись значения 1 сбрасывает счётчик износа в сценарии после замены фильтра."
+        }
+      ]
+    }
+  ],
+  "options": [
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "(1)/info"
+        }
+      ],
+      "name": "Серия | Тип | Частота | Версия ПО | MAC",
+      "write": false,
+      "inputType": "STATUS",
+      "type": "String"
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "(1)/Connect"
+        }
+      ],
+      "type": "String",
+      "write": false,
+      "name": "Соединение",
+      "inputType": "STATUS"
+    },
+    {
+      "type": "String",
+      "name": "Приток",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Происходит разворот вентилятора направлением потока в сторону помещения и осуществляется нагнетание свежего, прошедшего через фильтр воздуха."
+    },
+    {
+      "type": "String",
+      "name": "Приток MAX",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Программа предназначена для быстрого проветривания помещения. ПРИТОК включается в турбо режиме длительностью 5 минут. Режим активируется при скорости больше 0."
+    },
+    {
+      "type": "String",
+      "name": "Рекуперация лето",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Циклический разворот вентилятора приток-вытяжка с интервалом 40 сек. Благодаря теплообменнику происходит рекуперация тепла с КПД 80%. Рекомендуется при уличной температуре выше -10°С."
+    },
+    {
+      "type": "String",
+      "name": "Рекуперация зима",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Режим рекуперации с дополнительной функцией удаления наледи с теплообменника. Рекомендуется при уличной температуре -10°С и ниже."
+    },
+    {
+      "type": "String",
+      "name": "Вытяжка",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Происходит разворот вентилятора направлением потока в сторону улицы и осуществляется удаление загрязненного воздуха из помещения."
+    },
+    {
+      "type": "String",
+      "name": "Вытяжка MAX",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Программа предназначена для быстрого удаления из помещения неприятных запахов, а также для сушки теплообменника при высокой влажности."
+    },
+    {
+      "type": "String",
+      "name": "Ночной",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "В течение первых 5 минут вытягивает воздух из помещения на максимальной скорости. После чего переключается на скорость, установленную в настройках ночного режима."
+    },
+    {
+      "type": "String",
+      "name": "📊 Статус фильтра",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Ресурс фильтра отображается в сервисе 'Фильтр' (HC.FilterLifeLevel). Расчёт ведётся сценарием по объёму воздуха, режиму, скорости, сезону и коэффициенту загрязнения района."
+    },
+    {
+      "type": "String",
+      "name": "📋 Переменные сценария",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "m3Intake (м³ притока) | m3Exhaust (м³ вытяжки) | m3Total (всего) | wearF7 (% F7) | wearCarbon (% уголь) | lastTickTime | Сброс: записать 1 в ResetFilterIndication"
+    },
+    {
+      "type": "String",
+      "name": "Замена фильтра",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Основной фильтр тонкой очистки класса F7 установлен в корпусе шумоглушителя. Защищает от мелкодисперсной пыли и аллергенов. Для замены: потяните вверх вентиляционную решетку в верхней части шумоглушителя, извлеките фильтр и установите новый. Перед установкой нового фильтра убедитесь что защитная плёнка удалена. После замены — запишите 1 в ResetFilterIndication для сброса счётчика."
+    },
+    {
+      "type": "String",
+      "name": "Обслуживание теплообменника",
+      "write": false,
+      "inputType": "STATUS",
+      "value": "Теплообменник очистить от пыли пылесосом. Допускается промывка водой с неагрессивными моющими средствами. Перед установкой тщательно просушить."
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "(1)/Connect",
+          "topicSet": "(1)/system",
+          "outFunc": "'0608'"
+        }
+      ],
+      "type": "Boolean",
+      "name": "Сбросить до заводских",
+      "inputType": "BUTTON",
+      "description": "После сброса устройство отключится от MQTT. Необходимо заново настроить подключение через точку доступа VakioBaseSmart"
+    },
+    {
+      "link": [
+        {
+          "type": "String",
+          "topicGet": "(1)/Connect",
+          "topicSet": "(1)/system",
+          "outFunc": "'0609'"
+        }
+      ],
+      "type": "Boolean",
+      "name": "Обновить ПО",
+      "inputType": "BUTTON",
+      "description": "После обновления устройство перезагрузится и переподключится к MQTT автоматически."
+    }
+  ]
+}
