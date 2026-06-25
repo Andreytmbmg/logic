@@ -26,7 +26,7 @@
 
 | Файл | Описание |
 |---|---|
-| `Filter_Monitor_v3.10.json` | Логический сценарий SprutHub |
+| `Фильтр рекуператора — v3.10.json` | Логический сценарий SprutHub |
 | `VAKIO_Base_Smart_with_Filter_v3fix.json` | Шаблон устройства VAKIO BASE SMART с сервисами фильтра |
 | `README.md` | Документация |
 
