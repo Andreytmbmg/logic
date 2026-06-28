@@ -207,6 +207,14 @@ F7 реальный = 60 000 ÷ (1.25 × 1.00 × 1.05) ≈ 45 714 м³
   Дата=26-06-2026 (1 дней)
 ```
 
+### Шаг 5 — Настройте отображение интересующих параметров
+
+В настройках устройства **ЭКРАН УПРАВЛЕНИЯ** отключите или включите отображение параметров:
+<img width="685" height="678" alt="Снимок экрана 2026-06-28 в 11 01 17" src="https://github.com/user-attachments/assets/4e716bef-5cd5-40ba-a4ad-d149ddbdf996" />
+<img width="685" height="678" alt="Снимок экрана 2026-06-28 в 11 01 27" src="https://github.com/user-attachments/assets/db6cd10f-54ea-47e0-98a5-9e8e923925f7" />
+<img width="685" height="678" alt="Снимок экрана 2026-06-28 в 11 01 35" src="https://github.com/user-attachments/assets/bcf995ed-1db9-42dc-927a-85f3db0388ca" />
+<img width="685" height="678" alt="Снимок экрана 2026-06-28 в 11 01 43" src="https://github.com/user-attachments/assets/27e11ad3-baa1-4f6c-8c63-277cc81ab529" />
+
 ---
 
 ## Мониторинг
