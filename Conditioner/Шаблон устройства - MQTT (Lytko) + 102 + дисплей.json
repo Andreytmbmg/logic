@@ -1,0 +1,197 @@
+{
+  "name": "Кондиционер",
+  "manufacturer": "Lytko",
+  "model": "102",
+  "modelId": "homeassistant/climate/lytko/(.*)/config",
+  "services": [
+    {
+      "name": "Кондиционер",
+      "type": "Thermostat",
+      "characteristics": [
+        {
+          "type": "CurrentHeatingCoolingState",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "inFunc": "JSON.parse(value).mode",
+              "map": {
+                "0": "off",
+                "1": "heat",
+                "2": "cool"
+              }
+            }
+          ],
+          "validValues": "0,1,2"
+        },
+        {
+          "type": "TargetHeatingCoolingState",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/mode/set",
+              "inFunc": "JSON.parse(value).mode",
+              "map": {
+                "0": "off",
+                "1": "heat",
+                "2": "cool",
+                "3": "auto",
+                "-2": "dry",
+                "-1": "fan_only",
+                "ECO": "eco"
+              }
+            }
+          ],
+          "validValues": "0,1,2,3, -2, -1,ECO"
+        },
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "climate/lytko/(1)/state",
+              "inFunc": "JSON.parse(value).temp"
+            }
+          ]
+        },
+        {
+          "type": "TargetTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/temperature/set",
+              "inFunc": "JSON.parse(value).target_temp"
+            }
+          ],
+          "maxValue": 31,
+          "minValue": 16,
+          "minStep": 1
+        },
+        {
+          "type": "C_FanSpeed",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/fan/set",
+              "inFunc": "JSON.parse(value).fan_speed",
+              "map": {
+                "0": "auto",
+                "1": "quiet",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "turbo"
+              }
+            }
+          ],
+          "validValues": "0,1,2,3,4,5"
+        },
+        {
+          "type": "SwingMode",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/swing/set",
+              "inFunc": "JSON.parse(value).swing",
+              "map": {
+                "0": "off",
+                "1": "both",
+                "-1": "horizontal",
+                "-2": "vertical"
+              }
+            }
+          ],
+          "validValues": "0,1, -1, -2"
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "@backlight",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "switch/lytko/(1)/config",
+              "topicSet": "switch/lytko/(1)l/led/set",
+              "inFunc": "return JSON.parse(value).led === 'on';",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "@buzzer",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "switch/lytko/(1)/config",
+              "topicSet": "switch/lytko/(1)b/beep/set",
+              "inFunc": "return JSON.parse(value).beep === 'on';",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Health",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "switch/lytko/(1)/config",
+              "topicSet": "switch/lytko/(1)h/health/set",
+              "inFunc": "return JSON.parse(value).health === 'on';",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Sleep",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "switch/lytko/(1)/config",
+              "topicSet": "switch/lytko/(1)s/sleep/set",
+              "inFunc": "return JSON.parse(value).sleep === 'on';",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
