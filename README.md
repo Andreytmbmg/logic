@@ -43,6 +43,7 @@ logic/
 - **Sprut Hub** с поддержкой логических сценариев
 - Устройства, интегрированные через стандартные HomeKit-сервисы (Thermostat, Fan, FilterMaintenance, CarbonDioxideSensor, AirQualitySensor, ContactSensor и т.д.)
 - Для рекуператора — устройство **VAKIO BASE SMART**, подключённое по **MQTT**
+- Для кондиционера — контроллер **Lytko**, подключённое по **MQTT**
 
 ---
 
