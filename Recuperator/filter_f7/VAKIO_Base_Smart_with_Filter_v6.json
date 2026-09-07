@@ -12,6 +12,7 @@
       "characteristics": [
         {
           "type": "RotationSpeed",
+          "unit": "",
           "link": [
             {
               "type": "Integer",
@@ -59,6 +60,7 @@
         },
         {
           "type": "ActiveIdentifier",
+          "write": true,
           "description": "1 - Приток, 2 - Приток МАХ, 3 - Рекуперация лето, 4 - Рекуперация зима, 5 - Вытяжка, 6 - Вытяжка МАХ, 7 - Ночной",
           "link": [
             {
@@ -72,8 +74,8 @@
         },
         {
           "type": "ConfiguredName",
-          "name": "Режим работы",
           "write": false,
+          "name": "Режим работы",
           "link": [
             {
               "type": "String",
@@ -328,7 +330,7 @@
           "type": "FilterLifeLevel",
           "unit": "%",
           "value": 100,
-          "description": "Остаток ресурса = 100 - max(износ F7, износ угля). Обновляется сценарием."
+          "description": "Остаток ресурса = 100 - max(износ F7, износ угля, срок службы). Обновляется сценарием."
         },
         {
           "type": "FilterChangeIndication",
@@ -351,7 +353,10 @@
           "name": "Срок службы",
           "unit": "@unit_day",
           "value": 365,
-          "description": "Остаток в днях"
+          "minValue": 0,
+          "maxValue": 365,
+          "minStep": 1,
+          "description": "Остаток ресурса в днях. Обновляется сценарием."
         },
         {
           "type": "FilterChangeIndication",
@@ -366,7 +371,7 @@
         {
           "type": "C_CubicMeter",
           "unit": "%",
-          "name": "Процент",
+          "name": "Процент износа",
           "value": 0
         }
       ]
@@ -378,7 +383,7 @@
         {
           "type": "C_CubicMeter",
           "unit": "%",
-          "name": "Процент",
+          "name": "Процент износа",
           "value": 0
         }
       ]
