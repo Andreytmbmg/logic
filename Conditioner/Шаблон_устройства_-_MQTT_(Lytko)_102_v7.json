@@ -15,7 +15,11 @@
               "type": "String",
               "topicGet": "climate/lytko/(1)/state",
               "inFunc": "JSON.parse(value).mode",
-              "map": { "0": "off", "1": "heat", "2": "cool" }
+              "map": {
+                "0": "off",
+                "1": "heat",
+                "2": "cool"
+              }
             }
           ],
           "validValues": "0,1,2"
@@ -28,7 +32,15 @@
               "topicGet": "climate/lytko/(1)/state",
               "topicSet": "climate/lytko/(1)/mode/set",
               "inFunc": "JSON.parse(value).mode",
-              "map": { "0": "off", "1": "heat", "2": "cool", "3": "auto", "-2": "dry", "-1": "fan_only", "ECO": "eco" }
+              "map": {
+                "0": "off",
+                "1": "heat",
+                "2": "cool",
+                "3": "auto",
+                "-2": "dry",
+                "-1": "fan_only",
+                "ECO": "eco"
+              }
             }
           ],
           "validValues": "0,1,2,3, -2, -1,ECO"
@@ -36,13 +48,22 @@
         {
           "type": "CurrentTemperature",
           "link": [
-            { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).temp" }
+            {
+              "type": "Double",
+              "topicGet": "climate/lytko/(1)/state",
+              "inFunc": "JSON.parse(value).temp"
+            }
           ]
         },
         {
           "type": "TargetTemperature",
           "link": [
-            { "type": "Double", "topicGet": "climate/lytko/(1)/state", "topicSet": "climate/lytko/(1)/temperature/set", "inFunc": "JSON.parse(value).target_temp" }
+            {
+              "type": "Double",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/temperature/set",
+              "inFunc": "JSON.parse(value).target_temp"
+            }
           ],
           "maxValue": 31,
           "minValue": 16,
@@ -56,7 +77,14 @@
               "topicGet": "climate/lytko/(1)/state",
               "topicSet": "climate/lytko/(1)/fan/set",
               "inFunc": "JSON.parse(value).fan_speed",
-              "map": { "0": "auto", "1": "quiet", "2": "2", "3": "3", "4": "4", "5": "turbo" }
+              "map": {
+                "0": "auto",
+                "1": "quiet",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "turbo"
+              }
             }
           ],
           "validValues": "0,1,2,3,4,5"
@@ -69,10 +97,157 @@
               "topicGet": "climate/lytko/(1)/state",
               "topicSet": "climate/lytko/(1)/swing/set",
               "inFunc": "JSON.parse(value).swing",
-              "map": { "0": "off", "1": "both", "-1": "horizontal", "-2": "vertical" }
+              "map": {
+                "0": "off",
+                "1": "both",
+                "-1": "vertical",
+                "-2": "horizontal"
+              }
             }
           ],
           "validValues": "0,1, -1, -2"
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "@Подсветка",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)l/led/set",
+              "inFunc": "JSON.parse(value).led === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "@Зуммер",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)b/beep/set",
+              "inFunc": "JSON.parse(value).beep === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Здоровье",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)h/health/set",
+              "inFunc": "JSON.parse(value).health === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Сон",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)s/sleep/set",
+              "inFunc": "JSON.parse(value).sleep === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Блокировка пульта",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)k/lock_remote/set",
+              "inFunc": "JSON.parse(value).lock_remote === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Switch",
+      "name": "Самоочистка",
+      "characteristics": [
+        {
+          "type": "On",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "switch/lytko/(1)sc/self_clean/set",
+              "inFunc": "JSON.parse(value).self_clean === 'on'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TemperatureSensor",
+      "name": "Уличная температура",
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "type": "Double",
+              "topicGet": "climate/lytko/(1)/state",
+              "inFunc": "JSON.parse(value).t_outdoor"
+            }
+          ]
         }
       ]
     },
@@ -82,200 +257,12 @@
       "characteristics": [
         {
           "type": "C_Integer",
+          "write": false,
           "link": [
             {
               "type": "Integer",
               "topicGet": "climate/lytko/(1)/state",
               "inFunc": "JSON.parse(value).error_code"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "@Подсветка",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)l/led/set", "inFunc": "JSON.parse(value).led === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "@Зуммер",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)b/beep/set", "inFunc": "JSON.parse(value).beep === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Здоровье",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)h/health/set", "inFunc": "JSON.parse(value).health === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Сон",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)s/sleep/set", "inFunc": "JSON.parse(value).sleep === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Доп. обогрев",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)ah/aux_heat/set", "inFunc": "JSON.parse(value).aux_heat === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Очистка CH2O",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)ch/ch2o_clean/set", "inFunc": "JSON.parse(value).ch2o_clean === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Эко",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)ec/eco/set", "inFunc": "JSON.parse(value).eco === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Приток воздуха",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)fa/fresh_air/set", "inFunc": "JSON.parse(value).fresh_air === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Увлажнение",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)hu/humidify/set", "inFunc": "JSON.parse(value).humidify === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Интеллект",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)ie/intelligence/set", "inFunc": "JSON.parse(value).intelligence === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Блокировка пульта",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)k/lock_remote/set", "inFunc": "JSON.parse(value).lock_remote === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Свет",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)li/light/set", "inFunc": "JSON.parse(value).light === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Очистка PM2.5",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)pm/pm25_clean/set", "inFunc": "JSON.parse(value).pm25_clean === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "PMV (комфорт)",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)pv/pmv/set", "inFunc": "JSON.parse(value).pmv === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Самоочистка",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)sc/self_clean/set", "inFunc": "JSON.parse(value).self_clean === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "Switch",
-      "name": "Режим 10°C",
-      "characteristics": [
-        { "type": "On", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "topicSet": "switch/lytko/(1)t/ten_degree/set", "inFunc": "JSON.parse(value).ten_degree === 'on'", "map": { "true": "on", "false": "off" } } ] }
-      ]
-    },
-    {
-      "type": "FilterMaintenance",
-      "name": "Фильтр",
-      "characteristics": [
-        {
-          "type": "FilterChangeIndication",
-          "link": [
-            {
-              "type": "String",
-              "topicGet": "climate/lytko/(1)/state",
-              "inFunc": "JSON.parse(value).filter_change",
-              "map": { "0": "off", "1": "on" }
-            }
-          ],
-          "validValues": "0,1"
-        }
-      ]
-    },
-    {
-      "type": "TemperatureSensor",
-      "name": "Уличная температура",
-      "characteristics": [
-        { "type": "CurrentTemperature", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).t_outdoor" } ] }
-      ]
-    },
-    {
-      "type": "HumiditySensor",
-      "name": "Влажность в помещении",
-      "characteristics": [
-        { "type": "CurrentRelativeHumidity", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).humidity" } ] }
-      ]
-    },
-    {
-      "type": "CarbonDioxideSensor",
-      "name": "CO2",
-      "characteristics": [
-        { "type": "CarbonDioxideLevel", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).co2" } ] }
-      ]
-    },
-    {
-      "type": "AirQualitySensor",
-      "name": "Качество воздуха",
-      "characteristics": [
-        { "type": "VOCDensity", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).voc" } ] },
-        { "type": "PM2_5Density", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).pm25_indoor" } ] }
-      ]
-    },
-    {
-      "type": "AirQualitySensor",
-      "name": "PM2.5 (улица)",
-      "characteristics": [
-        { "type": "PM2_5Density", "link": [ { "type": "Double", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).pm25_outdoor" } ] }
-      ]
-    },
-    {
-      "type": "OccupancySensor",
-      "name": "Присутствие",
-      "characteristics": [
-        { "type": "OccupancyDetected", "link": [ { "type": "String", "topicGet": "climate/lytko/(1)/state", "inFunc": "JSON.parse(value).presence", "map": { "0": "off", "1": "on" } } ], "validValues": "0,1" }
-      ]
-    },
-    {
-      "type": "C_Option",
-      "name": "Формальдегид (CH2O)",
-      "characteristics": [
-        {
-          "type": "C_Integer",
-          "link": [
-            {
-              "type": "Integer",
-              "topicGet": "climate/lytko/(1)/state",
-              "inFunc": "JSON.parse(value).ch2o"
             }
           ]
         }
@@ -298,19 +285,163 @@
       ]
     },
     {
-      "type": "C_Option",
-      "name": "Целевая влажность",
+      "name": "Качание жалюзи (вертикально)",
+      "type": "Television",
       "characteristics": [
         {
-          "type": "C_Integer",
+          "type": "Active",
+          "name": "Режим",
           "link": [
             {
-              "type": "Integer",
+              "type": "String",
               "topicGet": "climate/lytko/(1)/state",
-              "topicSet": "number/lytko/(1)ht/set",
-              "inFunc": "JSON.parse(value).humidity_target"
+              "inFunc": "JSON.parse(value).mode !== '0'",
+              "map": {
+                "true": "on",
+                "false": "off"
+              }
             }
           ]
+        },
+        {
+          "type": "ActiveIdentifier",
+          "description": "1 - Верх, 2 - Выше центра, 3 - Центр, 4 - Ниже центра, 5 - Вниз",
+          "link": [
+            {
+              "type": "String",
+              "topicGet": "climate/lytko/(1)/state",
+              "topicSet": "climate/lytko/(1)/swing_vertical/set",
+              "inFunc": "({'MAX_UP':1,'UP':2,'CENTER_V':3,'DOWN':4,'MAX_DOWN':5})[JSON.parse(value).vswing] || 1",
+              "outFunc": "(['', 'MAX_UP', 'UP', 'CENTER_V', 'DOWN', 'MAX_DOWN'])[value]"
+            }
+          ]
+        },
+        {
+          "type": "ConfiguredName",
+          "name": "Режим работы",
+          "write": false,
+          "link": [
+            {
+              "type": "String",
+              "write": false,
+              "topicGet": "climate/lytko/(1)/state",
+              "inFunc": "({'MAX_UP':'Верх','UP':'Выше центра','CENTER_V':'Центр','DOWN':'Ниже центра','MAX_DOWN':'Вниз'})[JSON.parse(value).vswing] || 'Качание жалюзи'"
+            }
+          ]
+        },
+        {
+          "type": "SleepDiscoveryMode",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Верх",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 1
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Верх"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Выше центра",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 2
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Выше центра"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Центр",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 3
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Центр"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Ниже центра",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 4
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Ниже центра"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Вниз",
+      "type": "InputSource",
+      "characteristics": [
+        {
+          "type": "Identifier",
+          "value": 5
+        },
+        {
+          "type": "ConfiguredName",
+          "value": "Вниз"
+        },
+        {
+          "type": "IsConfigured",
+          "value": 1
+        },
+        {
+          "type": "CurrentVisibilityState",
+          "value": 0
         }
       ]
     }
