@@ -46,6 +46,7 @@
       "characteristics": [
         {
           "type": "Active",
+          "visible": false,
           "link": [
             {
               "type": "String",
@@ -86,6 +87,7 @@
         },
         {
           "type": "SleepDiscoveryMode",
+          "visible": false,
           "value": 1
         }
       ]
@@ -93,6 +95,7 @@
     {
       "name": "Приток",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -115,6 +118,7 @@
     {
       "name": "Приток MAX",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -137,6 +141,7 @@
     {
       "name": "Рекуперация лето",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -159,6 +164,7 @@
     {
       "name": "Рекуперация зима",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -181,6 +187,7 @@
     {
       "name": "Вытяжка",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -203,6 +210,7 @@
     {
       "name": "Вытяжка MAX",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -225,6 +233,7 @@
     {
       "name": "Ночной",
       "type": "InputSource",
+      "visible": false,
       "characteristics": [
         {
           "type": "Identifier",
@@ -339,6 +348,7 @@
         },
         {
           "type": "ResetFilterIndication",
+          "visible": false,
           "value": 0,
           "description": "Запись 1 → полный сброс счётчиков F7, угля, м³ и даты установки."
         }
@@ -517,7 +527,7 @@
       "type": "Boolean",
       "name": "Обновить ПО",
       "inputType": "BUTTON",
-      "description": "После обновления устройство перезагрузится и переподключиться к MQTT автоматически."
+      "description": "После обновления устройство перезагрузится и отключится от MQTT. Необходимо заново настроить подключение через точку доступа VakioBaseSmart."
     }
   ]
 }
