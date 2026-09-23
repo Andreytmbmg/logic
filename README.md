@@ -8,17 +8,17 @@
 
 ```
 logic/
-├── Conditioner/                                 # Управление кондиционером по температуре
+├── Conditioner/                               # Управление кондиционером по температуре
 │   ├── README.md
 │   ├── Кондиционер_vх_хх.json
 │   ├── Шаблон устройства - MQTT (Lytko) + 102 + дисплей. json
 │   └── Шаблон_устройства_-_MQTT_(Lytko)_102_vх.json
 │
-└── Recuperator/                                  # Управление рекуператором по качеству воздуха
+└── Recuperator/                                # Управление рекуператором по качеству воздуха
     ├── README.md
     ├── 💨 Рекуператор — vх.хх.json
     ├── Шаблон устройства - MQTT (VAKIO) + Base Smart.json
-    └── filter_f7/                                # Учёт ресурса фильтра рекуператора
+    └── filter_f7/                              # Учёт ресурса фильтра рекуператора
         ├── README.md
         ├── Filter_Monitor_vх.х.json
         └── VAKIO_Base_Smart_with_Filter_vх.json
