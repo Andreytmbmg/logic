@@ -11,7 +11,7 @@
 | Файл | Описание |
 |---|---|
 | `Filter_Monitor_v4.1.json` | Логический сценарий SprutHub |
-| `VAKIO_Base_Smart_with_Filter_v5.json` | Шаблон устройства VAKIO BASE SMART |
+| `VAKIO_Base_Smart_with_Filter_v6.json` | Шаблон устройства VAKIO BASE SMART |
 | `README.md` | Документация |
 
 ---
