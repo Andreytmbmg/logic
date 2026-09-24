@@ -2,7 +2,7 @@
 
 **Версия:** 5.6  
 **Платформа:** [Sprut Hub](https://spruthub.ru)  
-**Устройство:** VAKIO Base Smart (MQTT) + датчики качества воздуха
+**Устройство:** VAKIO Base Smart (MQTT)
 
 ---
 
