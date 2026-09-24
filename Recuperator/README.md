@@ -1,4 +1,4 @@
-# 💨 Рекуператор Vakio — логический сценарий для Sprut Hub
+# 💨 Рекуператор Vakio Base Smart— логический сценарий для Sprut Hub
 
 **Версия:** 5.6  
 **Платформа:** [Sprut Hub](https://spruthub.ru)  
